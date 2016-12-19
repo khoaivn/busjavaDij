@@ -52,7 +52,7 @@ public class DataBaseHelper
 
     public DataBaseHelper() {
         try{
-            String url = "jdbc:sqlite:C:/Users/anhkh/AndroidStudioProjects/khoai_bus/app/src/main/assets/dbname.sqlite";
+            String url = "jdbc:sqlite:C:/Users/anhkh/Documents/NetBeansProjects/SQLiteJDBCDriverConnection/dbname.sqlite";
             // create a connection to the database
             con = DriverManager.getConnection(url);
             st = con.createStatement();
@@ -75,6 +75,27 @@ public class DataBaseHelper
     }
 
 
+    public void addTrip(Trip trip) {
+        try
+        {
+            // call methods that might throw SQLException
+            String query = "insert into tbl_trip (id_start, id_finish, "
+                    + "time, list_station) "
+                    + "values (?, ?, ?, ?)";
+            PreparedStatement values = con.prepareStatement(query);
+
+            values.setInt(1, trip.getIDStart());
+            values.setInt(2, trip.getIDFinish());
+            values.setInt(3, trip.getTime());
+            values.setString(4, trip.getListStation().toString());
+            values.executeUpdate(); 
+        }
+        catch (SQLException e)
+        {
+            // do something appropriate with the exception, *at least*:
+            e.printStackTrace();
+        }
+    }
 
 
     public List<Route> getAllRoute() {

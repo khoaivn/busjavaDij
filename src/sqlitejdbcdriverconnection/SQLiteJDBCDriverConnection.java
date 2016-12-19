@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import org.json.JSONArray;
 
 
 /**
@@ -23,13 +24,16 @@ public class SQLiteJDBCDriverConnection {
      */
     public static void main(String[] args) {
         DataBaseHelper data = new DataBaseHelper();
+        JSONArray jsonArray = new JSONArray();
+        Trip trip = new Trip(2, 3, 34, jsonArray);
+        data.addTrip(trip);
 
-        Location diem1 = new Location("Bat dau", 21.049468, 105.785459);
-        Location diem2 = new Location("Ket thuc",  20.982390, 105.791012);
-
-        MaTranKe maTranKe = new MaTranKe(diem1, diem2, data);
-        maTranKe.tinh();
-        maTranKe.Dij();
+//        Location diem1 = new Location("Bat dau", 21.049468, 105.785459);
+//        Location diem2 = new Location("Ket thuc",  20.982390, 105.791012);
+//
+//        MaTranKe maTranKe = new MaTranKe(diem1, diem2, data);
+//        maTranKe.tinh();
+//        maTranKe.Dij();
         
     }
 //    public static void connect() {
