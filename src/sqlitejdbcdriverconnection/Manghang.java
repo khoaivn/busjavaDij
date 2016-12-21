@@ -135,12 +135,10 @@ public class Manghang {
         int id_station = station.getId();
         int i = 0;
         int id_station_i = arrayIdStation.get(i);
-        mark_one[id_station_i] = true;
         while (id_station_i != id_station){
             insertToArray(arrayIdStation.get(i + 1), arrayIdStation.get(0), arrayTime.get(i + 1), route.getCode());
             ++i;
             id_station_i = arrayIdStation.get(i);
-            mark_one[id_station_i] = true;
         }
     }
         Station getStation(int id_station){
